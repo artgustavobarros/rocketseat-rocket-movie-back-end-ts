@@ -14,6 +14,7 @@
     "@rocketseat/eslint-config": "^2.2.2",
     "@types/node": "^20.12.2",
     "eslint": "^8.57.0",
+    "prisma": "^5.12.1",
     "tsx": "^4.7.1",
     "typescript": "^5.4.3",
     "vite-tsconfig-paths": "^4.3.2",
@@ -26,11 +27,11 @@
     "@fastify/static": "^7.0.2",
     "@prisma/client": "^5.11.0",
     "@types/bcryptjs": "^2.4.6",
+    "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
     "fastify": "^4.26.2",
     "fastify-multer": "^2.0.3",
-    "prisma": "^5.11.0",
     "zod": "^3.22.4"
   }
 }

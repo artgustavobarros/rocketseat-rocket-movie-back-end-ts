@@ -28,7 +28,7 @@ app.register(fastifyCookie)
 app.register(userRoutes, { prefix: '/users' })
 app.register(notesRoutes, { prefix: '/notes' })
 
-app.register(cors)
+app.register(cors, {})
 
 app.setErrorHandler((error, request, reply) => {
   if (error instanceof ZodError) {
