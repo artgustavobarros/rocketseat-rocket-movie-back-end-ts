@@ -46,7 +46,7 @@ export async function registerNotes(
       })
     })
 
-    return reply.status(200).send({ message: 'Note sucessfully created' })
+    return reply.status(200).send({ note })
   } catch (err) {
     if (err instanceof InvalidCredentialError) {
       return reply.status(400).send({ message: err.message })

@@ -33,6 +33,8 @@ export async function updateUser(request: FastifyRequest, reply: FastifyReply) {
       where: { id: request.user.sub },
       data: { name: user.name, email: user.email, password: user.password },
     })
+
+    return reply.status(200).send({ user })
   } catch (err) {
     if (err instanceof InvalidCredentialError) {
       return reply.status(400).send({ message: err.message })
@@ -40,6 +42,4 @@ export async function updateUser(request: FastifyRequest, reply: FastifyReply) {
 
     throw err
   }
-
-  return reply.status(200).send({ message: 'Users updated' })
 }

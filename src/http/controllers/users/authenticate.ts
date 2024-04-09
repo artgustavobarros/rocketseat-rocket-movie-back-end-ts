@@ -51,7 +51,7 @@ export async function authenticateUser(
         httpOnly: true,
       })
       .status(200)
-      .send({ token })
+      .send({ user, token })
   } catch (err) {
     if (err instanceof InvalidCredentialError) {
       return reply.status(400).send({ message: err.message })
