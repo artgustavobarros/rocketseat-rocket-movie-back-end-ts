@@ -5,16 +5,7 @@ import { randomUUID } from 'crypto'
 export class InMemoryNotesRepository implements NoteRepository {
   public items: Note[] = []
 
-  async create(data: Prisma.NoteUncheckedCreateInput): Promise<{
-    id: string
-    title: string
-    description: string | null
-    rating: number
-    arr_tags: string[]
-    user_id: string
-    created_at: Date
-    updated_at: Date
-  }> {
+  async create(data: Prisma.NoteUncheckedCreateInput) {
     const arrTags: string[] = Array.isArray(data.arr_tags) ? data.arr_tags : []
 
     const note = {
@@ -33,6 +24,16 @@ export class InMemoryNotesRepository implements NoteRepository {
     return note
   }
 
+  async fetchAll(user_id: string) {
+    const notes = this.items.filter((note) => note.user_id === user_id)
+
+    if (!notes) {
+      return null
+    }
+
+    return notes
+  }
+
   async findByTitle(title: string) {
     return this.items.filter((item) => item.title.includes(title))
   }
@@ -49,7 +50,6 @@ export class InMemoryNotesRepository implements NoteRepository {
 
   async delete(id: string) {
     const index = this.items.findIndex((item) => item.id === id)
-
     this.items.splice(index, 1)
   }
 }

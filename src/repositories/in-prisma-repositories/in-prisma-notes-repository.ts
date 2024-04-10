@@ -9,8 +9,16 @@ export class PrismaNotesRepository implements NoteRepository {
     return note
   }
 
+  async fetchAll(user_id: string) {
+    const notes = await prisma.note.findMany({ where: { user_id } })
+
+    return notes
+  }
+
   async findByTitle(title: string) {
-    const notes = await prisma.note.findMany({ where: { title } })
+    const notes = await prisma.note.findMany({
+      where: { title: { contains: title } },
+    })
 
     return notes
   }

@@ -1,16 +1,16 @@
-import { NotesRepository } from '@/repositories/interfaces/notes-repository'
-import { Notes } from '@prisma/client'
+import { NoteRepository } from '@/repositories/interfaces/notes-repository'
+import { Note } from '@prisma/client'
 
 interface FetchNotesByTitleUseCaseRequest {
   title: string
 }
 
 interface FetchNotesByTitleUseCaseReply {
-  notes: Notes[]
+  notes: Note[]
 }
 
 export class FetchNotesByTitleUseCase {
-  constructor(private notesRepository: NotesRepository) {}
+  constructor(private notesRepository: NoteRepository) {}
 
   async execute({
     title,

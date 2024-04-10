@@ -35,16 +35,16 @@ export async function registerNotes(
       arr_tags,
     })
 
-    const tagsRepository = new PrismaTagsRepository()
-    const tagsUseCase = new CreateTagUserCase(tagsRepository)
+    // const tagsRepository = new PrismaTagsRepository()
+    // const tagsUseCase = new CreateTagUserCase(tagsRepository)
 
-    note.arr_tags.map(async (item: string) => {
-      await tagsUseCase.execute({
-        name: item,
-        user_id: request.user.sub,
-        notes_id: note.id,
-      })
-    })
+    // note.arr_tags.map(async (item: string) => {
+    //   await tagsUseCase.execute({
+    //     name: item,
+    //     user_id: request.user.sub,
+    //     notes_id: note.id,
+    //   })
+    // })
 
     return reply.status(200).send({ note })
   } catch (err) {

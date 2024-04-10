@@ -1,17 +1,17 @@
-import { NotesRepository } from '@/repositories/interfaces/notes-repository'
+import { NoteRepository } from '@/repositories/interfaces/notes-repository'
 import { ContentNotFoundError } from '@/utils/errors/content-not-found'
-import { Notes } from '@prisma/client'
+import { Note } from '@prisma/client'
 
 interface FindNotesByIdRequest {
   id: string
 }
 
 interface FindNotesByIdReply {
-  note: Notes
+  note: Note
 }
 
 export class FindNotesById {
-  constructor(private notesRepository: NotesRepository) {}
+  constructor(private notesRepository: NoteRepository) {}
 
   async execute({ id }: FindNotesByIdRequest): Promise<FindNotesByIdReply> {
     const note = await this.notesRepository.findById(id)
