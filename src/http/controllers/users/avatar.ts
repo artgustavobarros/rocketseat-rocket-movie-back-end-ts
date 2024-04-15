@@ -30,15 +30,14 @@ export async function addUsersAvatar(
     }
 
     const avatar = await diskStorage.saveFile(filename)
-
-    user.avatar = avatar
+    const updatedAt = new Date()
 
     await prisma.user.update({
       where: { id: request.user.sub },
-      data: { avatar },
+      data: { avatar, updated_at: updatedAt },
     })
 
-    return reply.status(200).send({ message: 'Avatar added' })
+    return reply.status(200).send({ user })
   } catch (err) {
     if (err instanceof InvalidCredentialError) {
       return reply.status(400).send({ message: err.message })
