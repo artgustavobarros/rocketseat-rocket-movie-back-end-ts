@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build": "tsup src"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     "dotenv": "^16.4.5",
     "fastify": "^4.26.2",
     "fastify-multer": "^2.0.3",
+    "tsup": "^8.0.2",
     "zod": "^3.22.4"
   }
 }
